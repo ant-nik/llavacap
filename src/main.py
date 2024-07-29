@@ -16,7 +16,7 @@ pipe = transformers.pipeline("image-to-text", model=model_id,
                              model_kwargs={"quantization_config": quantization_config})
 
 
-@app.get("/")
+@app.post("/")
 def read_item(prompt: str, img: fastapi.UploadFile, max_new_tokens: int = 2000) -> str:
     image = PIL.Image.open(io.BytesIO(img.file.read()))
     if image is None:
