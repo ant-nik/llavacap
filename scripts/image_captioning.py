@@ -43,7 +43,7 @@ with tempfile.TemporaryDirectory() as name:
             raise RuntimeError(f"Error, an image with a path {image_name} doesnt exists")
 
         outputs = pipe(image, prompt=prompt, generate_kwargs={"max_new_tokens": 2000})
-        with open(os.path.join(result_path, os.path.basename(image_name), ".txt"), "w") as caption:
+        with open(os.path.join(result_path, os.path.basename(image_name) + ".txt"), "w") as caption:
             caption.write(outputs[0]["generated_text"])
 
     shutil.make_archive(base_name=output_file, format="zip", root_dir=result_path)
