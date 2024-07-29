@@ -23,9 +23,9 @@ pipe = transformers.pipeline("image-to-text", model=model_id,
                              model_kwargs={"quantization_config": quantization_config})
 
 max_new_tokens = 200
-prompt = "USER: <image>\nFind construction entities on the image. "
-"Split answer in two sections LIST and EXPLANATION. Put detected object "
-"to LIST section. Put explanation of the answer into EXPLANATION section.\nASSISTANT:"
+prompt = ("USER: <image>\nFind construction entities on the image. " +
+          "Split answer in two sections LIST and EXPLANATION. Put detected object " +
+          "to LIST section. Put explanation of the answer into EXPLANATION section.\nASSISTANT:")
 
 with tempfile.TemporaryDirectory() as name:
     filename = os.path.join(name, zipname)
